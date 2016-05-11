@@ -10,7 +10,7 @@ npm install markov-clustering
 
 ## Usage
 
-The main entry point is the partition function. It takes two arguments, an [adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix) graph representation and an optional options parameter.
+The main entry point is the cluster function. It takes two arguments, an [adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix) graph representation and an optional options parameter.
 
 Here's an example options object with default values:
 
@@ -53,7 +53,7 @@ const A = math.matrix([[0, 1, 1, 0, 0, 0],
                        [0, 0, 1, 0, 1, 1],
                        [0, 0, 0, 1, 0, 1],
                        [0, 0, 0, 1, 1, 0]]);
-const clusters = mc.partition(A);
+const clusters = mc.cluster(A);
 ```
 
 'clusters' now holds an array where each item is a cluster: [[0, 1, 2], [3, 4, 5]].

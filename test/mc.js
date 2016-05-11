@@ -46,18 +46,18 @@ describe('Markov clustering tests', () => {
     expect(jsArray).to.deep.equal([0, 1, 2, 3, 4]);
   });
 
-  it('Perform partitioning on hello world style adjacency matrix', () => {
+  it('Perform clustering on hello world style adjacency matrix', () => {
     const A = math.matrix([[0, 1, 1, 0, 0, 0],
                            [1, 0, 1, 0, 0, 0],
                            [1, 1, 0, 1, 0, 0],
                            [0, 0, 1, 0, 1, 1],
                            [0, 0, 0, 1, 0, 1],
                            [0, 0, 0, 1, 1, 0]]);
-    const clusters = mc.partition(A);
+    const clusters = mc.cluster(A);
     expect(clusters).to.deep.equal([[0, 1, 2], [3, 4, 5]]);
   });
 
-  it('Perform partitioning on simple adjacency matrix', () => {
+  it('Perform clustering on simple adjacency matrix', () => {
     const A = math.matrix([[0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
                            [1, 0, 1, 0, 0, 1, 0, 0, 0, 1],
                            [0, 1, 0, 0, 0, 0, 1, 1, 1, 0],
@@ -68,7 +68,7 @@ describe('Markov clustering tests', () => {
                            [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                            [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                            [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]]);
-    const clusters = mc.partition(A);
+    const clusters = mc.cluster(A);
     expect(clusters).to.deep.equal([[1, 5, 9], [2, 6, 7, 8], [0, 3, 4]]);
   });
 });

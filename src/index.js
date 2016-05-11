@@ -79,7 +79,7 @@ exports.done = function done(M, i) {
 };
 
 // Takes an adjectancy matrix and options
-exports.partition = function partition(M, options) {
+exports.cluster = function cluster(M, options) {
   const opt = options || {};
   const expandFactor = opt.expandFactor || 2;
   const inflateFactor = opt.inflateFactor || 2;
