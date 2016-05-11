@@ -1,6 +1,6 @@
 ## What is this?
 
-This is a simple Markov graph clustering implementation based on http://micans.org/mcl/.
+This is a Markov graph clustering implementation based on http://micans.org/mcl/.
 
 ## Installation
 
@@ -8,12 +8,44 @@ This is a simple Markov graph clustering implementation based on http://micans.o
 npm install markov-clustering
 ```
 
-## Example
+## Usage
 
-The algorithm entry point, partition, takes an https://en.wikipedia.org/wiki/Adjacency_matrix describing the graph to partition into clusters, and an optional options object.
+The main entry point is the partition function. It takes two arguments, an [adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix) graph representation and an optional options parameter.
+
+Here's an example options object with default values:
 
 ```js
-const mc = require('../index.js');
+const options = {
+  expandFactor: 2,
+  inflateFactor: 2,
+  maxLoops: 10,
+  multFactor: 1;
+}
+```
+
+## Example
+
+The undirected graph below is used in this example.
+
+![Before clustering](https://cloud.githubusercontent.com/assets/12221141/15180949/c9bd6ca6-1784-11e6-8cb3-72451d25202c.png "Before clustering")
+
+Create an [adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix) representation of your graph, this will be the input for the clustering algorithm.
+
+Here's the adjacency matrix for the graph above:
+
+```
+[[0, 1, 1, 0, 0, 0],
+ [1, 0, 1, 0, 0, 0],
+ [1, 1, 0, 1, 0, 0],
+ [0, 0, 1, 0, 1, 1],
+ [0, 0, 0, 1, 0, 1],
+ [0, 0, 0, 1, 1, 0]]
+```
+
+The following snippet clusters the adjacency matrix:
+
+```js
+const mc = require('markov-clustering');
 
 const A = math.matrix([[0, 1, 1, 0, 0, 0],
                        [1, 0, 1, 0, 0, 0],
@@ -24,15 +56,21 @@ const A = math.matrix([[0, 1, 1, 0, 0, 0],
 const clusters = mc.partition(A);
 ```
 
-clusters will then hold two clusters, [0, 1, 2] and [3, 4, 5].
+'clusters' now holds an array where each item is a cluster: [[0, 1, 2], [3, 4, 5]].
+
+![After clustering](https://cloud.githubusercontent.com/assets/12221141/15180948/c9ba17f4-1784-11e6-8e33-032bad35a26e.png "After clustering")
 
 ## Tests
 
 Some basic tests are included:
 
 ```sh
-npm run tests
+npm run test
 ```
+
+## Dependencies
+
+The implementation relies on http://mathjs.org/ for matrix implementation.
 
 ## License
 

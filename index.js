@@ -88,13 +88,13 @@ _exports.partition = function partition(M, options) {
   var opt = options || {};
   var expandFactor = opt.expandFactor || 2;
   var inflateFactor = opt.inflateFactor || 2;
-  var maxLoop = opt.maxLoop || 10;
+  var maxLoops = opt.maxLoops || 10;
   var multFactor = opt.multFactor || 1;
 
   var A = this.addDiagonal(M, multFactor);
   A = this.normalizeColumns(A);
 
-  for (var i = 0; i < maxLoop; i++) {
+  for (var i = 0; i < maxLoops; i++) {
     A = this.inflate(A, inflateFactor);
     A = this.expand(A, expandFactor);
     if (this.done(A, i)) {

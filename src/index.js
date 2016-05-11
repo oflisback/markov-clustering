@@ -83,13 +83,13 @@ exports.partition = function partition(M, options) {
   const opt = options || {};
   const expandFactor = opt.expandFactor || 2;
   const inflateFactor = opt.inflateFactor || 2;
-  const maxLoop = opt.maxLoop || 10;
+  const maxLoops = opt.maxLoops || 10;
   const multFactor = opt.multFactor || 1;
 
   let A = this.addDiagonal(M, multFactor);
   A = this.normalizeColumns(A);
 
-  for (let i = 0; i < maxLoop; i++) {
+  for (let i = 0; i < maxLoops; i++) {
     A = this.inflate(A, inflateFactor);
     A = this.expand(A, expandFactor);
     if (this.done(A, i)) {
