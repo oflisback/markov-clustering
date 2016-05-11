@@ -1,6 +1,6 @@
 ## What is this?
 
-This is a Markov graph clustering implementation based on http://micans.org/mcl/.
+This is a simple Markov graph cluster algorithm implementation. For more information about the algorithm, see http://micans.org/mcl/.
 
 ## Installation
 
@@ -46,6 +46,7 @@ The following snippet clusters the adjacency matrix:
 
 ```js
 const mc = require('markov-clustering');
+const math = require('mathjs');
 
 const A = math.matrix([[0, 1, 1, 0, 0, 0],
                        [1, 0, 1, 0, 0, 0],
@@ -53,10 +54,13 @@ const A = math.matrix([[0, 1, 1, 0, 0, 0],
                        [0, 0, 1, 0, 1, 1],
                        [0, 0, 0, 1, 0, 1],
                        [0, 0, 0, 1, 1, 0]]);
-const clusters = mc.cluster(A);
+console.log(mc.cluster(A));
 ```
 
-'clusters' now holds an array where each item is a cluster: [[0, 1, 2], [3, 4, 5]].
+```sh
+$ node snippet.js
+[ [ 0, 1, 2 ], [ 3, 4, 5 ] ]
+```
 
 ![After clustering](https://cloud.githubusercontent.com/assets/12221141/15180948/c9ba17f4-1784-11e6-8e33-032bad35a26e.png "After clustering")
 
@@ -71,6 +75,10 @@ npm run test
 ## Dependencies
 
 The implementation relies on http://mathjs.org/ for matrix implementation.
+
+## Credits
+
+The implementation is largely based on Python MCL https://github.com/koteth/python_mcl.
 
 ## License
 

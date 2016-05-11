@@ -70,9 +70,6 @@ exports.getClusters = function getClusters(A) {
 };
 
 exports.done = function done(M, i) {
-  if (i % 10 !== 9) {
-    return false;
-  }
   const testMatrix = math.dotPow(M, 2);
   const m = math.max(testMatrix) - math.min(testMatrix);
   return (m === 0);
