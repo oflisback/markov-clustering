@@ -2,24 +2,20 @@ const exports = module.exports = {};
 const math = require('mathjs');
 
 exports.colSum = function colSum(A) {
-  const nbrRows = A.size()[0];
-  const nbrCols = A.size()[1];
-  const sum = Array(nbrCols);
-
-  for (let i = 0; i < nbrCols; i++) {
-    sum[i] = math.sum(math.subset(A, math.index(math.range(0, nbrRows), i)));
-  }
-
-  return sum;
+  const ones = math.ones(A.size()[0]);
+  return math.multiply(math.transpose(A), ones);
 };
 
-// Repeats array row and constructs matrix
 exports.repmat = function repmat(row, n) {
-  const r = [];
+  // Should really do ones(n, 1)*row but mathjs has very
+  // limited support for vector multiplication.
+  const repMatrix = [];
+
   for (let i = 0; i < n; i++) {
-    r.push(row);
+    repMatrix.push(row._data);
   }
-  return math.matrix(r);
+
+  return math.matrix(repMatrix);
 };
 
 exports.rowMatrixToArray = function rowMatrixToArray(M) {

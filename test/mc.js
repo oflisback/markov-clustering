@@ -7,11 +7,11 @@ describe('Markov clustering tests', () => {
     const A = math.matrix([[0, 1], [2, 3], [4, 5]]);
     const colSum = mc.colSum(A);
 
-    expect(colSum).to.deep.equal([6, 9]);
+    expect(colSum).to.deep.equal(math.matrix([6, 9]));
   });
 
   it('Produces a matrix by repeating a row', () => {
-    const repeated = mc.repmat([1, 2, 3], 2);
+    const repeated = mc.repmat(math.matrix([1, 2, 3]), 2);
 
     expect(repeated).to.deep.equal(math.matrix([[1, 2, 3], [1, 2, 3]]));
   });
