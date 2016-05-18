@@ -71,6 +71,11 @@ Some basic tests are included:
 ```sh
 npm run test
 ```
+## Performance
+
+The computational complexity is not encouraging, the graph below shows execution time for different number of nodes with a fitted third order polynomial. By the way I did not see a significant difference when the graphs were very sparse and represented with sparse mathjs matrices, I didn't look into why, it is not likely that improving the representation would make enough difference for my intended application.
+
+![Computational complexity](https://cloud.githubusercontent.com/assets/12221141/15360596/76b95c06-1d0e-11e6-97ad-a3c5943d0a4c.png "Computational complexity")
 
 ## Dependencies
 
