@@ -19,7 +19,7 @@ const options = {
   expandFactor: 2,
   inflateFactor: 2,
   maxLoops: 10,
-  multFactor: 1;
+  multFactor: 1
 }
 ```
 
